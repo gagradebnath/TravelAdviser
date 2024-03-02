@@ -1,13 +1,14 @@
 # include "iGraphics.h"
 
-char str[100], str2[100];
+char str[100], str2[100], str3[100];
 int len;
 int mode;
-
-void drawTextBox()
-{
+int circle_x=100, circle_y=100;
+int usr_in=0,pass_in=0;
+void drawTextBox(){
 	iSetColor(150, 150, 150);
 	iRectangle(50, 250, 250, 30);
+	iRectangle(50, 180, 250, 30);
 }
 
 /*
@@ -24,9 +25,15 @@ void iDraw()
 	{
 		iSetColor(255, 255, 255);
 		iText(55, 260, str);
+
+		
+		iSetColor(255, 255, 255);
+		iText(55, 200, str);
+
 	}
 
 	iText(10, 10, "Click to activate the box, enter to finish.");
+	iFilledCircle(circle_x, circle_y, 30);
 }
 
 /*
@@ -35,7 +42,12 @@ void iDraw()
 */
 void iMouseMove(int mx, int my)
 {
-	//place your codes here
+	circle_x = mx;
+	circle_y = my;
+
+	printf("x = %d, y= %d\n", mx, my);
+
+
 }
 
 /*
@@ -47,14 +59,22 @@ void iMouse(int button, int state, int mx, int my)
 	if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
 		//place your codes here
-		if(mx >= 50 && mx <= 300 && my >= 250 && my <= 280 && mode == 0)
+		if(mx >= 50 && mx <= 300 && my >= 250 && my <= 280)
 		{
+			usr_in=1;
+			pass_in=0;
+			mode = 1;
+		}
+		if(mx >= 50 && mx <= 300 && my >= 180 && my <= 210)
+		{
+			usr_in=1;
+			pass_in=0;
 			mode = 1;
 		}
 	}
 	if(button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
 	{
-		//place your codes here
+		printf("x = %d, y= %d\n",mx,my);
 	}
 }
 
@@ -65,7 +85,7 @@ void iMouse(int button, int state, int mx, int my)
 void iKeyboard(unsigned char key)
 {
 	int i;
-	if(mode == 1)
+	if(mode == 1 && usr_in==1)
 	{
         if(key == '\r')
 		{
@@ -75,6 +95,33 @@ void iKeyboard(unsigned char key)
 			for(i = 0; i < len; i++)
 				str[i] = 0;
 			len = 0;
+		}
+		if(key == '\b')
+		{
+			if(len > 0)
+			{
+				len--;
+				str[len] = 0;
+			}
+		}
+		else
+		{
+			str[len] = key;
+			len++;
+		}
+	}
+
+
+	if(mode == 1 && pass_in==1)
+	{
+
+		if(key == '\b')
+		{
+			if(len > 0)
+			{
+				len--;
+				str[len] = 0;
+			}
 		}
 		else
 		{
