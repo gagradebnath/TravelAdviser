@@ -39,7 +39,7 @@ Travel Adviser is a comprehensive travel planning software designed to make your
     ```bash
     git clone https://github.com/gagradebnath/TravelAdviser.git
 6. Open the project in your preferred C++ IDE and build the project to run the software.
-7. Build and run the project to start using Travel Adviser  .
+7. Build and run the "iMain.cpp" to start using Travel Adviser  .
    
 
 

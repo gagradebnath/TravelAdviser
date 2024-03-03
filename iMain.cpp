@@ -20,7 +20,7 @@ int initialize = 0;
 void initializing(){
 	remove("bot_response.txt");
 	FILE *file = fopen("bot_response.txt", "w");
-	fprintf(file, "Hi! I am Salem Here to Assist you !\n Lets Plan a Trip\n Where do you want to go?");
+	fprintf(file, "Hi! I am Salem Here to Assist you !\n Lets Plan a Trip and Discover Bangladesh.\n Where do you want to go?");
 	fclose(file);
 
 }
@@ -370,7 +370,12 @@ void free_user_text_input(char *user_text_free){
 	// 	user_text_free[user_text_len]='\0';
 	// 	user_text_len--;
 	// }
-	memset(user_text_free, 0, sizeof(user_text_free));
+	int len = strlen(user_text_free);
+	while(len>=0){
+		user_text_free[len]='\0';
+		len--;
+	}
+	// memset(user_text_free, '\0', sizeof(user_text_free));
 	user_text_len=0;
 }
 
@@ -421,7 +426,7 @@ void addorder() {
 	}
 	time_t order_ref = time(NULL);
 	strcat(user_text_budget,"\0");
-	fprintf(file, "%d,%ld,%s,%s,%s,%s,%s,%s,%s", user,order_ref, usr_name, user_text_destination,user_text_transport, user_text_hotel, user_text_days, user_text_guide, user_text_budget);
+	fprintf(file, "%d,%ld,%s,%s,%s,%s,%s,%s,%s\n", user,order_ref, usr_name, user_text_destination,user_text_transport, user_text_hotel, user_text_days, user_text_guide, user_text_budget);
 	printf("adding order - done\n");
 	fclose(file);
 }
@@ -859,6 +864,11 @@ void iMouse(int button, int state, int mx, int my) {
 				}
 				else{
 					prev_page = page;
+					free_user_text_input(usr_name);
+					free_user_text_input(pass);
+					free_user_text_input(security);
+					pass_len=0;
+					usr_len=0;
 					page=4;
 				}
 			}
