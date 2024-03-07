@@ -744,7 +744,7 @@ void iDraw() {
 	// landing_page();
 	
 	iSetColor(0,0,0);
-	if(auth)iText(10,10,"Press <F1> to Sign Out",GLUT_BITMAP_HELVETICA_18);
+	if(auth)iText(10,10,"Press <F1> to Sign Out (Developed by Salem)",GLUT_BITMAP_HELVETICA_18);
 	
 }
 
