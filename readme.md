@@ -37,7 +37,7 @@ Travel Adviser is a comprehensive travel planning software designed to make your
 4. install **igrphics library** following the instructions provided in the repository.
 5. clone the repository to your local machine using the following command:
     ```bash
-    git clone https://github.com/gagradebnath/TravelAdviser.git
+    gh repo clone gagradebnath/TravelAdviser
 6. Open the project in your preferred C++ IDE and build the project to run the software.
 7. Build and run the "iMain.cpp" to start using Travel Adviser  .
    
